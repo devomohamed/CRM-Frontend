@@ -1,0 +1,15 @@
+{
+    "APP": {
+        "TITLE": "Angular CRM",
+        "SUBTITLE": "Manage your customers efficiently"
+    },
+    "NAV": {
+        "DASHBOARD": "Dashboard",
+        "CUSTOMERS": "Customers",
+        "LEADS": "Leads",
+        "DEALS": "Deals",
+        "TASKS": "Tasks",
+        "TICKETS": "Tickets",
+        "REPORTS": "Reports"
+    }
+}

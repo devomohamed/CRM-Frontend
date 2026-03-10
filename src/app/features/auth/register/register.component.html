@@ -1,0 +1,60 @@
+<div class="auth-wrapper flex items-center justify-center min-h-screen p-4 bg-slate-900">
+    <div class="glass p-8 md:p-12 shadow-2xl rounded-3xl w-full max-w-md transition-all duration-300">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold mb-2 text-gradient">Create Account</h2>
+            <p class="text-slate-600 font-medium">Join our CRM community today</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+                <label for="name" class="font-bold text-slate-700 ml-1">Full Name</label>
+                <div class="relative w-full">
+                    <i class="pi pi-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 z-10"></i>
+                    <input pInputText id="name" formControlName="name" placeholder="John Doe"
+                        class="w-full !rounded-2xl !py-4 !pl-12 !border-slate-200 focus:!border-indigo-500 transition-all" />
+                </div>
+                <p-message
+                    *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)"
+                    severity="error" text="Name is required" styleClass="w-full !rounded-xl"></p-message>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="email" class="font-bold text-slate-700 ml-1">Email Address</label>
+                <div class="relative w-full">
+                    <i class="pi pi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 z-10"></i>
+                    <input pInputText id="email" formControlName="email" type="email" placeholder="email@example.com"
+                        class="w-full !rounded-2xl !py-4 !pl-12 !border-slate-200 focus:!border-indigo-500 transition-all" />
+                </div>
+                <p-message
+                    *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)"
+                    severity="error" text="Invalid email format" styleClass="w-full !rounded-xl"></p-message>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="password" class="font-bold text-slate-700 ml-1">Password</label>
+                <div class="relative w-full">
+                    <i class="pi pi-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 z-10"></i>
+                    <p-password id="password" formControlName="password" [toggleMask]="true"
+                        placeholder="Choose a password" styleClass="w-full"
+                        inputStyleClass="w-full !rounded-2xl !py-4 !pl-12 !border-slate-200 focus:!border-indigo-500 transition-all"></p-password>
+                </div>
+                <p-message
+                    *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)"
+                    severity="error" text="At least 6 characters required" styleClass="w-full !rounded-xl"></p-message>
+            </div>
+
+            <div *ngIf="errorMessage" class="animate-in fade-in slide-in-from-top-1">
+                <p-message severity="error" [text]="errorMessage" styleClass="w-full !rounded-xl"></p-message>
+            </div>
+
+            <p-button label="Get Started" type="submit" [loading]="isLoading" [disabled]="registerForm.invalid"
+                styleClass="w-full !rounded-2xl !py-4 !text-xl !font-bold p-button-raised !bg-gradient-to-r !from-blue-800 !to-violet-600 !border-none hover:!scale-[1.02] active:!scale-[0.98] transition-all"></p-button>
+
+            <div class="text-center mt-3">
+                <span class="text-slate-600 text-sm font-medium">Already have an account? </span>
+                <a routerLink="/login"
+                    class="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors">Sign In</a>
+            </div>
+        </form>
+    </div>
+</div>
