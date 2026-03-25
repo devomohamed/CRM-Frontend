@@ -53,15 +53,18 @@ export class AuthService {
     private autoLogin(): void {
         const token = this.tokenService.getToken();
         if (token) {
-            // Ideally, you'd fetch the user profile from the server here to verify the token
-            // For now, we'll assume the token is valid and might need a "me" endpoint
+            // Fetch the user profile from the server to verify the token
+            // If the endpoint is not available or token is expired, logout gracefully
             this.http.get<User>(`${this.API_URL}/auth/me`).pipe(
                 tap(user => {
                     this.currentUserSignal.set(user);
                     this.isAuthenticated.set(true);
                 }),
-                catchError(() => {
-                    // this.logout();
+                catchError((error) => {
+                    // If the me endpoint fails (404, 401, etc.), assume token is invalid and clear auth
+                    // This prevents the error from propagating to the component
+                    console.warn('Auto-login failed:', error.message);
+                    this.tokenService.removeToken();
                     return of(null);
                 })
             ).subscribe();

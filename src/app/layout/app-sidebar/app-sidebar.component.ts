@@ -48,7 +48,7 @@ interface NavItem {
           }
         </div>
 
-        <div class="py-4"><div class="h-[1px] bg-slate-100"></div></div>
+        <div class="py-4"><div class="h-px bg-slate-100"></div></div>
         
         <!-- Support Nav Items -->
         <p class="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{{ 'NAV.SUPPORT' | translate | uppercase }}</p>

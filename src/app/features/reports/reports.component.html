@@ -1,0 +1,34 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-8">{{ 'NAV.REPORTS' | translate }}</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for (report of reports; track report.id) {
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="w-full p-6 bg-gradient-to-r from-blue-50 to-blue-100 flex items-center justify-center">
+            <i [class]="'text-4xl text-blue-600 ' + report.icon"></i>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="title">
+          {{ report.title }}
+        </ng-template>
+
+        <ng-template pTemplate="content">
+          <p class="text-slate-600 mb-4">{{ report.description }}</p>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+          <div class="w-full">
+            <p-button 
+              [label]="'REPORTS.VIEW' | translate"
+              icon="pi pi-eye"
+              (click)="downloadReport(report.id)"
+              [text]="true"
+              class="w-full !justify-center"></p-button>
+          </div>
+        </ng-template>
+      </p-card>
+    }
+  </div>
+</div>

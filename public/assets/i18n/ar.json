@@ -10,6 +10,86 @@
         "DEALS": "الصفقات",
         "TASKS": "المهام",
         "TICKETS": "التذاكر",
-        "REPORTS": "التقارير"
+        "REPORTS": "التقارير",
+        "SETTINGS": "الإعدادات",
+        "SUPPORT": "الدعم"
+    },
+    "COMMON": {
+        "ACTIONS": "الإجراءات",
+        "EDIT": "تعديل",
+        "DELETE": "حذف",
+        "SAVE": "حفظ",
+        "CANCEL": "إلغاء",
+        "NO_DATA": "لا توجد بيانات متاحة",
+        "EMAIL": "البريد الإلكتروني",
+        "PHONE": "رقم الهاتف",
+        "STATUS": "الحالة",
+        "CREATED": "تم الإنشاء",
+        "UPDATED": "تم التحديث"
+    },
+    "DEALS": {
+        "PLACEHOLDER": "إدارة الصفقات قريباً",
+        "ADD": "إضافة صفقة",
+        "EDIT": "تعديل الصفقة",
+        "TITLE": "العنوان",
+        "STAGE": "المرحلة"
+    },
+    "CUSTOMERS": {
+        "ADD": "إضافة عميل",
+        "EDIT": "تعديل العميل",
+        "NAME": "الاسم",
+        "EMAIL": "البريد الإلكتروني",
+        "PHONE": "رقم الهاتف",
+        "COMPANY": "الشركة",
+        "STATUS": "الحالة"
+    },
+    "LEADS": {
+        "ADD": "إضافة عميل محتمل",
+        "EDIT": "تعديل العميل المحتمل",
+        "NAME": "الاسم",
+        "EMAIL": "البريد الإلكتروني",
+        "PHONE": "رقم الهاتف",
+        "COMPANY": "الشركة",
+        "SOURCE": "المصدر",
+        "SCORE": "الدرجة",
+        "STATUS": "الحالة"
+    },
+    "TASKS": {
+        "ADD": "إضافة مهمة",
+        "EDIT": "تعديل المهمة",
+        "TITLE": "العنوان",
+        "DESCRIPTION": "الوصف",
+        "PRIORITY": "الأولوية",
+        "DUE_DATE": "تاريخ الاستحقاق",
+        "STATUS": "الحالة",
+        "RELATED_TO": "مرتبط بـ"
+    },
+    "TICKETS": {
+        "ADD": "إضافة تذكرة",
+        "EDIT": "تعديل التذكرة",
+        "SUBJECT": "الموضوع",
+        "DESCRIPTION": "الوصف",
+        "PRIORITY": "الأولوية",
+        "STATUS": "الحالة",
+        "CUSTOMER": "العميل",
+        "CREATED": "تم الإنشاء"
+    },
+    "REPORTS": {
+        "VIEW": "عرض التقرير"
+    },
+    "SETTINGS": {
+        "COMPANY": "إعدادات الشركة",
+        "NOTIFICATIONS": "الإشعارات",
+        "SECURITY": "الأمان",
+        "TEAM": "إدارة الفريق",
+        "COMPANY_NAME": "اسم الشركة",
+        "WEBSITE": "الموقع الإلكتروني",
+        "TIMEZONE": "المنطقة الزمنية",
+        "CURRENCY": "العملة",
+        "EMAIL_NOTIFICATIONS": "إشعارات البريد الإلكتروني",
+        "PUSH_NOTIFICATIONS": "الإشعارات الفورية",
+        "SMS_NOTIFICATIONS": "إشعارات الرسائل",
+        "WEEKLY_DIGEST": "ملخص أسبوعي",
+        "MONTHLY_REPORT": "التقرير الشهري"
     }
 }

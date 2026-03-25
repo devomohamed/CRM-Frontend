@@ -10,6 +10,86 @@
         "DEALS": "Deals",
         "TASKS": "Tasks",
         "TICKETS": "Tickets",
-        "REPORTS": "Reports"
+        "REPORTS": "Reports",
+        "SETTINGS": "Settings",
+        "SUPPORT": "Support"
+    },
+    "COMMON": {
+        "ACTIONS": "Actions",
+        "EDIT": "Edit",
+        "DELETE": "Delete",
+        "SAVE": "Save",
+        "CANCEL": "Cancel",
+        "NO_DATA": "No data available",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "STATUS": "Status",
+        "CREATED": "Created",
+        "UPDATED": "Updated"
+    },
+    "DEALS": {
+        "PLACEHOLDER": "Deals list and management coming soon",
+        "ADD": "Add Deal",
+        "EDIT": "Edit Deal",
+        "TITLE": "Title",
+        "STAGE": "Stage"
+    },
+    "CUSTOMERS": {
+        "ADD": "Add Customer",
+        "EDIT": "Edit Customer",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "COMPANY": "Company",
+        "STATUS": "Status"
+    },
+    "LEADS": {
+        "ADD": "Add Lead",
+        "EDIT": "Edit Lead",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "COMPANY": "Company",
+        "SOURCE": "Source",
+        "SCORE": "Score",
+        "STATUS": "Status"
+    },
+    "TASKS": {
+        "ADD": "Add Task",
+        "EDIT": "Edit Task",
+        "TITLE": "Title",
+        "DESCRIPTION": "Description",
+        "PRIORITY": "Priority",
+        "DUE_DATE": "Due Date",
+        "STATUS": "Status",
+        "RELATED_TO": "Related To"
+    },
+    "TICKETS": {
+        "ADD": "Add Ticket",
+        "EDIT": "Edit Ticket",
+        "SUBJECT": "Subject",
+        "DESCRIPTION": "Description",
+        "PRIORITY": "Priority",
+        "STATUS": "Status",
+        "CUSTOMER": "Customer",
+        "CREATED": "Created"
+    },
+    "REPORTS": {
+        "VIEW": "View Report"
+    },
+    "SETTINGS": {
+        "COMPANY": "Company Settings",
+        "NOTIFICATIONS": "Notifications",
+        "SECURITY": "Security",
+        "TEAM": "Team Management",
+        "COMPANY_NAME": "Company Name",
+        "WEBSITE": "Website",
+        "TIMEZONE": "Timezone",
+        "CURRENCY": "Currency",
+        "EMAIL_NOTIFICATIONS": "Email Notifications",
+        "PUSH_NOTIFICATIONS": "Push Notifications",
+        "SMS_NOTIFICATIONS": "SMS Notifications",
+        "WEEKLY_DIGEST": "Weekly Digest",
+        "MONTHLY_REPORT": "Monthly Report"
     }
 }

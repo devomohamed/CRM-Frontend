@@ -31,7 +31,6 @@ For every new feature, I will strictly follow this 7-step process:
 7. **Write tests**
 
 ## Features List
-- [x] Reports (Basic scaffolding)
 - [x] Tailwind CSS 4 Integration
 - [x] PrimeNG v21 Setup
 - [x] ngx-translate (i18n) Configuration (EN/AR)
@@ -41,6 +40,65 @@ For every new feature, I will strictly follow this 7-step process:
 - [x] Authentication Module (Login, Register, Forgot Password)
 - [x] JWT Integration & Token Storage
 - [x] Route Guards & Interceptors
+- [x] Dashboard Module
+- [x] Customers Module (CRUD with validation, RBAC: ADMIN, MANAGER)
+- [x] Leads Module (CRUD with scoring system, RBAC: ADMIN, MANAGER, USER)
+- [x] Deals Module (Basic scaffolding with route)
+- [x] Tasks Module (CRUD with status management, priority levels)
+- [x] Tickets Module (CRUD with priority and status tracking)
+- [x] Reports Module (Dashboard view with multiple report types)
+- [x] Settings Module (Company settings, notification preferences)
+
+## Implemented Services (Backend Integration Ready)
+- `CustomerService` - CRUD operations with pagination and search
+- `LeadService` - Lead management with status and score tracking
+- `TaskService` - Task management with status updates
+- `TicketService` - Ticket management with status workflow
+- All services use mock data (TODO: Replace with HTTP calls when backend is ready)
+
+## Recent Implementations
+- **Comprehensive CRM Module Suite Implemented (March 25, 2026)**
+  - Created 6 feature modules: Customers, Leads, Tasks, Tickets, Reports, Settings
+  - Implemented 4 backend services with CRUD operations
+  - Business Logic:
+    1. **Customers**: CRUD, status management (ACTIVE/INACTIVE/PROSPECT)
+    2. **Leads**: CRUD, lead scoring (0-100), multi-source tracking, status workflow (NEW→CONTACTED→QUALIFIED→LOST)
+    3. **Tasks**: CRUD, priority levels (LOW/MEDIUM/HIGH/URGENT), status tracking, due dates, relationship management
+    4. **Tickets**: CRUD, priority handling, status workflow (OPEN→IN_PROGRESS→RESOLVED→CLOSED)
+    5. **Reports**: Dashboard view of 6 key report types (Sales Pipeline, Revenue, Customer Analysis, Team Performance, Lead Conversion, Activity)
+    6. **Settings**: Company configuration, notification preferences, timezone and currency settings
+  - UI Implementation:
+    - All components use PrimeNG tables with pagination, sorting, filtering
+    - Modal dialogs for create/edit operations
+    - Reactive Forms with validation (reactive form patterns, required fields, email validation, etc.)
+    - Status badges with semantic color coding
+    - Toast notifications for success/error feedback
+    - OnPush change detection strategy for performance
+    - TrackBy implementation for ngFor loops
+  - i18n Support: Full EN/AR translations added for all new components
+  - Architecture: All business logic in services, components handle UI/UX only
+  - Routes: All modules lazy-loaded in app.routes.ts under protected routes with authGuard
+  - Status: Fully implemented with mock data, ready for backend API integration
+  - **TODO**: Replace mock data promises with actual HTTP calls when backend endpoints available
+
+## Recent Fixes & Issues Resolved
+- **Issue**: Clicking "Deals" sidebar button redirects to login page instead of going to deals page
+  - **Root Cause**: Deals feature was not implemented - no route defined for `/deals`, so wildcard route redirected to login
+  - **Fix**: 
+    1. Created Deals feature module at `src/app/features/deals/`
+    2. Added `deals.component.ts`, `deals.component.html`, `deals.component.scss`, and `deals.component.spec.ts`
+    3. Added `/deals` route to `app.routes.ts` children array with lazy loading
+    4. Added translation keys for deals in both EN and AR i18n files
+  - **Status**: Fixed ✓
+
+- **Issue**: GET `http://localhost:3000/api/auth/me` 404 (Not Found) during autoLogin
+  - **Root Cause**: AuthService was attempting to validate stored tokens by calling `/auth/me` endpoint, which returns 404 when backend endpoint is unavailable
+  - **Fix**: Modified `autoLogin()` method in [AuthService](src/app/core/auth/auth.service.ts) to:
+    1. Gracefully handle 404 and other errors from the `/auth/me` endpoint
+    2. Clear invalid token from localStorage when validation fails
+    3. Log warning message instead of silent failure
+    4. Allow app to start without blocking on unavailable backend endpoint
+  - **Status**: Fixed ✓
 
 ## Project Architecture
 The project follows a modular structure within `src/app`:

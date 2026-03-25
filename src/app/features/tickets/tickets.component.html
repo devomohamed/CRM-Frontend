@@ -1,0 +1,130 @@
+<div class="container mx-auto py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">{{ 'NAV.TICKETS' | translate }}</h1>
+    <p-button 
+      [label]="'TICKETS.ADD' | translate"
+      icon="pi pi-plus"
+      (click)="openDialog()"
+      class="text-sm!"></p-button>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+    <p-table
+      [value]="tickets()"
+      [loading]="loading()"
+      [paginator]="true"
+      [rows]="10"
+      [totalRecords]="tickets().length"
+      styleClass="w-full"
+      responsiveLayout="scroll">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="subject">{{ 'TICKETS.SUBJECT' | translate }} <p-sortIcon field="subject"></p-sortIcon></th>
+          <th pSortableColumn="priority">{{ 'TICKETS.PRIORITY' | translate }} <p-sortIcon field="priority"></p-sortIcon></th>
+          <th pSortableColumn="status">{{ 'TICKETS.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+          <th pSortableColumn="createdAt">{{ 'TICKETS.CREATED' | translate }} <p-sortIcon field="createdAt"></p-sortIcon></th>
+          <th>{{ 'COMMON.ACTIONS' | translate }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-ticket>
+        <tr>
+          <td class="font-medium">{{ ticket.subject }}</td>
+          <td>
+            <span [ngClass]="{
+              'bg-green-100 text-green-800': ticket.priority === 'LOW',
+              'bg-yellow-100 text-yellow-800': ticket.priority === 'MEDIUM',
+              'bg-orange-100 text-orange-800': ticket.priority === 'HIGH',
+              'bg-red-100 text-red-800': ticket.priority === 'URGENT'
+            }" class="px-3 py-1 rounded-full text-xs font-semibold">
+              {{ ticket.priority }}
+            </span>
+          </td>
+          <td>
+            <p-select
+              [options]="statusOptions"
+              [ngModel]="ticket.status"
+              optionLabel="label"
+              optionValue="value"
+              (onChange)="updateTicketStatus(ticket, $event.value)"
+              class="w-full"></p-select>
+          </td>
+          <td>{{ ticket.createdAt | date: 'short' }}</td>
+          <td>
+            <p-button
+              [text]="true"
+              icon="pi pi-pencil"
+              [title]="'COMMON.EDIT' | translate"
+              (click)="openDialog(ticket)"
+              class="p-1! mr-2"></p-button>
+            <p-button
+              [text]="true"
+              icon="pi pi-trash"
+              severity="danger"
+              [title]="'COMMON.DELETE' | translate"
+              (click)="deleteTicket(ticket.id)"
+              class="p-1!"></p-button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5" class="text-center py-8 text-slate-500">
+            {{ 'COMMON.NO_DATA' | translate }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-dialog
+    [visible]="showDialog()"
+    (visibleChange)="showDialog.set($event)"
+    [header]="isEditing() ? ('TICKETS.EDIT' | translate) : ('TICKETS.ADD' | translate)"
+    [modal]="true"
+    [style]="{ width: '500px' }">
+    
+    <form [formGroup]="form">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2">{{ 'TICKETS.SUBJECT' | translate }}</label>
+          <input pInputText formControlName="subject" class="w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-2">{{ 'TICKETS.DESCRIPTION' | translate }}</label>
+          <textarea pInputText formControlName="description" rows="3" class="w-full"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-2">{{ 'TICKETS.PRIORITY' | translate }}</label>
+          <p-select
+            [options]="priorityOptions"
+            formControlName="priority"
+            optionLabel="label"
+            optionValue="value"
+            class="w-full"></p-select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-2">{{ 'TICKETS.CUSTOMER' | translate }}</label>
+          <input pInputText formControlName="customerId" class="w-full" />
+        </div>
+      </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+      <p-button
+        [label]="'COMMON.CANCEL' | translate"
+        [text]="true"
+        (click)="showDialog.set(false)"></p-button>
+      <p-button
+        [label]="'COMMON.SAVE' | translate"
+        (click)="saveTicket()"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-toast></p-toast>
+</div>

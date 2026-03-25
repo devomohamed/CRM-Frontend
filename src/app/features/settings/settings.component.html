@@ -1,0 +1,139 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-8">{{ 'NAV.SETTINGS' | translate }}</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Sidebar Menu -->
+    <div class="lg:col-span-1">
+      <div class="sticky top-20">
+        <nav class="space-y-1 bg-white rounded-2xl border border-slate-100">
+          <button class="w-full text-left px-4 py-3 bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600">
+            <i class="pi pi-building mr-2"></i>
+            {{ 'SETTINGS.COMPANY' | translate }}
+          </button>
+          <button class="w-full text-left px-4 py-3 text-slate-600 hover:bg-slate-50 transition">
+            <i class="pi pi-bell mr-2"></i>
+            {{ 'SETTINGS.NOTIFICATIONS' | translate }}
+          </button>
+          <button class="w-full text-left px-4 py-3 text-slate-600 hover:bg-slate-50 transition">
+            <i class="pi pi-shield mr-2"></i>
+            {{ 'SETTINGS.SECURITY' | translate }}
+          </button>
+          <button class="w-full text-left px-4 py-3 text-slate-600 hover:bg-slate-50 transition">
+            <i class="pi pi-users mr-2"></i>
+            {{ 'SETTINGS.TEAM' | translate }}
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Settings Content -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Company Settings -->
+      <p-card>
+        <ng-template pTemplate="title">
+          <i class="pi pi-building mr-2"></i>
+          {{ 'SETTINGS.COMPANY' | translate }}
+        </ng-template>
+
+        <form [formGroup]="companyForm">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">{{ 'SETTINGS.COMPANY_NAME' | translate }}</label>
+              <input pInputText formControlName="companyName" class="w-full" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">{{ 'COMMON.EMAIL' | translate }}</label>
+                <input pInputText type="email" formControlName="email" class="w-full" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">{{ 'COMMON.PHONE' | translate }}</label>
+                <input pInputText formControlName="phone" class="w-full" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">{{ 'SETTINGS.WEBSITE' | translate }}</label>
+              <input pInputText formControlName="website" class="w-full" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">{{ 'SETTINGS.TIMEZONE' | translate }}</label>
+                <p-select
+                  [options]="timezoneOptions"
+                  formControlName="timezone"
+                  optionLabel="label"
+                  optionValue="value"
+                  class="w-full"></p-select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">{{ 'SETTINGS.CURRENCY' | translate }}</label>
+                <p-select
+                  [options]="currencyOptions"
+                  formControlName="currency"
+                  optionLabel="label"
+                  optionValue="value"
+                  class="w-full"></p-select>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <ng-template pTemplate="footer">
+          <p-button
+            [label]="'COMMON.SAVE' | translate"
+            icon="pi pi-check"
+            (click)="saveCompanySettings()"></p-button>
+        </ng-template>
+      </p-card>
+
+      <!-- Notification Settings -->
+      <p-card>
+        <ng-template pTemplate="title">
+          <i class="pi pi-bell mr-2"></i>
+          {{ 'SETTINGS.NOTIFICATIONS' | translate }}
+        </ng-template>
+
+        <form [formGroup]="notificationForm">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <label class="text-sm font-medium">{{ 'SETTINGS.EMAIL_NOTIFICATIONS' | translate }}</label>
+              <p-toggleswitch formControlName="emailNotifications"></p-toggleswitch>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <label class="text-sm font-medium">{{ 'SETTINGS.PUSH_NOTIFICATIONS' | translate }}</label>
+              <p-toggleswitch formControlName="pushNotifications"></p-toggleswitch>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <label class="text-sm font-medium">{{ 'SETTINGS.SMS_NOTIFICATIONS' | translate }}</label>
+              <p-toggleswitch formControlName="smsNotifications"></p-toggleswitch>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <label class="text-sm font-medium">{{ 'SETTINGS.WEEKLY_DIGEST' | translate }}</label>
+              <p-toggleswitch formControlName="weeklyDigest"></p-toggleswitch>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <label class="text-sm font-medium">{{ 'SETTINGS.MONTHLY_REPORT' | translate }}</label>
+              <p-toggleswitch formControlName="monthlyReport"></p-toggleswitch>
+            </div>
+          </div>
+        </form>
+
+        <ng-template pTemplate="footer">
+          <p-button
+            [label]="'COMMON.SAVE' | translate"
+            icon="pi pi-check"
+            (click)="saveNotifications()"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+
+  <p-toast></p-toast>
+</div>
