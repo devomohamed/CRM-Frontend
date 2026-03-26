@@ -35,8 +35,8 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build (GitHub Pages base path)
+        run: npm run build -- --base-href /CRM-Frontend/ --deploy-url /CRM-Frontend/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
