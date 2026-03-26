@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   build:
-    # Run on push to master OR when a PR is merged into master (closed+merged)
+    # Run on push to master OR when a PR is merged into master
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
@@ -41,7 +41,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist/crm/browser
 
   deploy:
     needs: build
