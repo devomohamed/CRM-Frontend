@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: ng build --base-href "/CRM-Frontend/" --deploy-url "/CRM-Frontend/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
